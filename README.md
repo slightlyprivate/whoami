@@ -1,75 +1,107 @@
-# Matt H. — Portfolio (whoami.slightlyprivate.com)
+# whoami — Portfolio for Matt H.
 
-A small, fast Next.js App Router site with Tailwind CSS. Dark theme with a warm sand accent, accessible motion and focus, and simple project cards.
+A fast, privacy-centric portfolio site built with **Next.js App Router** and **Tailwind CSS**, deployed to **Cloudflare Pages** for edge performance.  
+Dark theme with warm sand accents, accessible motion and focus, and clean project presentation.
 
-## Tech
+---
 
-- Next.js App Router + TypeScript
-- Tailwind CSS
-- `next/font` (Inter, JetBrains Mono)
-- Static assets in `public/`
+### 🌐 Live Site
+[whoami.slightlyprivate.com](https://whoami.slightlyprivate.com)
 
-## Local Development
+---
 
-- Prereqs: Node 18+ and npm
-- Install: `npm install`
-- Dev: `npm run dev` then open <http://localhost:3000>
-- Build: `npm run build`
-- Start (prod): `npm run start`
+### 🧰 Tech Stack
+- **Frontend:** Next.js (App Router) · TypeScript · Tailwind CSS · `next/font` (Inter, JetBrains Mono)
+- **Infra & Deploy:** Cloudflare Pages · `@cloudflare/next-on-pages` · Wrangler CLI
+- **Analytics:** Optional self-hosted Umami (privacy-respecting)
+- **Assets:** Static media and resume PDF served from `/public`
 
-## Pages
+---
 
-- `/` Home hero + highlights
-- `/projects` Project cards from `data/projects.ts`
-- `/about` Bio and values
-- `/contact` Email + social links
-- `/resume` Serves `/public/resume.pdf` with HTML fallback
-- `/privacy` Basic privacy page
-- `/sitemap.xml` Built via `app/sitemap.ts`
-- `/robots.txt` Static in `public/`
+### ⚙️ Local Development
+```bash
+# Requirements
+Node 18+ and npm
 
-## Accessibility
+# Install dependencies
+npm install
 
-- High contrast dark theme (#0B0B0C bg, #F4D7A1 accent)
-- Skip-to-content, focus-visible rings, reduced-motion safe transitions
-- Semantic headings and nav landmarks
+# Run locally
+npm run dev
+# → http://localhost:3000
 
-## Analytics (optional)
+# Build & start production bundle
+npm run build && npm run start
+```
 
-- Umami (self-hosted): set `NEXT_PUBLIC_UMAMI_WEBSITE_ID` and optionally `NEXT_PUBLIC_UMAMI_SRC` (defaults to `https://umami.slightlybetter.dev/fetch.js`). The script loads after interactive and does not block rendering.
-- If unset, no analytics are loaded.
+---
 
-## Cloudflare Pages
+### 📄 Page Structure
+| Path | Description |
+|------|--------------|
+| `/` | Home hero + highlights |
+| `/projects` | Project cards sourced from `data/projects.ts` |
+| `/about` | Bio and guiding values |
+| `/contact` | Email + social links |
+| `/resume` | Serves `/public/resume.pdf` with HTML fallback |
+| `/privacy` | Basic privacy page |
+| `/sitemap.xml` | Built via `app/sitemap.ts` |
+| `/robots.txt` | Static in `/public/` |
 
-See `cloudflare-pages.md` for recommended settings and headers.
+---
 
-## Cloudflare Workers/Pages with Wrangler
+### ♿ Accessibility
+- High-contrast dark palette (`#0B0B0C` background · `#F4D7A1` accent)  
+- Skip-to-content link, visible focus rings, reduced-motion safe transitions  
+- Semantic headings and landmark regions  
 
-This project is set up to deploy Next.js to Cloudflare Pages (Edge) using `@cloudflare/next-on-pages` with Wrangler.
+---
 
-Scripts:
+### 📊 Analytics (Optional)
+If you use Umami analytics, set these environment variables:
 
-- Build for Pages: `npm run cf:build` (outputs to `.vercel/output`)
-- Local preview: `npm run cf:dev` (serves `.vercel/output` at <http://localhost:8788>)
-- Deploy: `npm run cf:deploy` (requires a Pages project; update `--project-name` in `package.json`)
+| Variable | Purpose |
+|-----------|----------|
+| `NEXT_PUBLIC_UMAMI_WEBSITE_ID` | Your Umami website ID |
+| `NEXT_PUBLIC_UMAMI_SRC` *(optional)* | Script URL, defaults to `https://umami.slightlybetter.dev/fetch.js` |
 
-Setup steps:
+> The script loads after interactive and does not block rendering.  
+> If unset, no analytics are loaded.
 
-1) Login: `npx wrangler login`
-2) Create a Pages project in the dashboard (or via `npx wrangler pages project create`).
-3) Build + deploy: `npm run cf:build && npm run cf:deploy`
+---
 
-Environment variables (Pages → Settings → Environment variables):
+### ☁️ Cloudflare Deployment
+This project is configured for **Cloudflare Pages (Edge)** using `@cloudflare/next-on-pages`.
 
-- `NEXT_PUBLIC_UMAMI_WEBSITE_ID`: your Umami Website ID
-- Optional: `NEXT_PUBLIC_UMAMI_SRC` (defaults to `https://umami.slightlybetter.dev/fetch.js`)
+**Common scripts**
+```bash
+# Build for Pages (Edge)
+npm run cf:build
+
+# Local Edge preview
+npm run cf:dev   # → http://localhost:8788
+
+# Deploy to your Cloudflare Pages project
+npm run cf:deploy
+```
+
+Setup summary:
+1. `npx wrangler login`
+2. Create a Pages project (`npx wrangler pages project create`)
+3. `npm run cf:build && npm run cf:deploy`
 
 Notes:
+- Outputs a fully edge-ready bundle in `.vercel/output`.
+- Avoid Node-only APIs at runtime; for metadata like resume mtime, compute at build-time or set `NEXT_PUBLIC_RESUME_UPDATED`.
 
-- next-on-pages outputs a fully edge-ready bundle in `.vercel/output` (functions + static). Wrangler uses this output for dev/deploy.
-- Avoid Node-only APIs at runtime. If you need file metadata (e.g., resume mtime), compute it at build-time or pass via env var. The current resume page reads mtime inside a try/catch; for strict Edge, you can set `NEXT_PUBLIC_RESUME_UPDATED` and render that instead.
+---
 
-## Notes
+### 📝 Notes
+- Replace `public/og.png` and `public/favicon.ico` with final assets.
+- Replace `public/resume.pdf` with your actual resume.
+- See `cloudflare-pages.md` for recommended headers and caching policies.
 
-- `public/og.png` and `public/favicon.ico` are placeholders — replace with real assets.
-- `public/resume.pdf` is a minimal placeholder PDF — replace with your resume.
+---
+
+> _Built quietly, deployed deliberately._  
+> © Matt H. · Slightly Private
