@@ -5,12 +5,17 @@ Dark theme with warm sand accents, accessible motion and focus, and clean projec
 
 ---
 
-### 🌐 Live Site
+### Live Site
 [whoami.slightlyprivate.com](https://whoami.slightlyprivate.com)
 
 ---
 
-### 🧰 Tech Stack
+### Preview of whoami
+![Preview of whoami](./og.png)
+
+---
+
+### Tech Stack
 - **Frontend:** Next.js (App Router) · TypeScript · Tailwind CSS · `next/font` (Inter, JetBrains Mono)
 - **Infra & Deploy:** Cloudflare Pages · `@cloudflare/next-on-pages` · Wrangler CLI
 - **Analytics:** Optional self-hosted Umami (privacy-respecting)
@@ -18,7 +23,7 @@ Dark theme with warm sand accents, accessible motion and focus, and clean projec
 
 ---
 
-### ⚙️ Local Development
+### Local Development
 ```bash
 # Requirements
 Node 18+ and npm
@@ -36,7 +41,7 @@ npm run build && npm run start
 
 ---
 
-### 📄 Page Structure
+### Page Structure
 | Path | Description |
 |------|--------------|
 | `/` | Home hero + highlights |
@@ -50,14 +55,14 @@ npm run build && npm run start
 
 ---
 
-### ♿ Accessibility
+### Accessibility
 - High-contrast dark palette (`#0B0B0C` background · `#F4D7A1` accent)  
 - Skip-to-content link, visible focus rings, reduced-motion safe transitions  
 - Semantic headings and landmark regions  
 
 ---
 
-### 📊 Analytics (Optional)
+### Analytics (Optional)
 If you use Umami analytics, set these environment variables:
 
 | Variable | Purpose |
@@ -70,7 +75,7 @@ If you use Umami analytics, set these environment variables:
 
 ---
 
-### ☁️ Cloudflare Deployment
+### Cloudflare Deployment
 This project is configured for **Cloudflare Pages (Edge)** using `@cloudflare/next-on-pages`.
 
 **Common scripts**
@@ -96,7 +101,7 @@ Notes:
 
 ---
 
-### 📝 Notes
+### Notes
 - Replace `public/og.png` and `public/favicon.ico` with final assets.
 - Replace `public/resume.pdf` with your actual resume.
 - See `cloudflare-pages.md` for recommended headers and caching policies.
