@@ -6,7 +6,7 @@ export default function Headshot() {
   const [loaded, setLoaded] = useState(false);
   return (
     <Image
-      src="/photo_sm.png"
+      src="/linkedin.jpg"
       alt="Matt H. headshot."
       width={800}
       height={800}
